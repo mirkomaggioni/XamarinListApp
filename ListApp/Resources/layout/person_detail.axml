@@ -23,4 +23,11 @@
 		android:layout_marginLeft="50.0dp"
 		android:textSize="20dip"
 		android:id="@+id/detailItemLastname" />
+	<Button
+		android:text="Back"
+		android:layout_marginTop="50.0dp"
+		android:layout_marginLeft="50.0dp"
+		android:layout_width="150dp"
+		android:layout_height="50dp"
+		android:id="@+id/detailItemBackButton" />
 </LinearLayout>

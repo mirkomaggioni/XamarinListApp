@@ -34,6 +34,7 @@ namespace ListApp
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.persons_list);
+
 			var list = FindViewById<ListView>(Resource.Id.listPersons);
 			list.Adapter = new PersonAdapter(this, persons);
 			list.ItemClick += ItemOnClick;
