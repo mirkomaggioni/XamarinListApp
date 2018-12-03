@@ -2504,14 +2504,14 @@ namespace ListApp
 			// aapt resource value: 0x7f080096
 			public const int design_navigation_view = 2131230870;
 			
+			// aapt resource value: 0x7f0800b2
+			public const int detailItemFirstname = 2131230898;
+			
 			// aapt resource value: 0x7f0800b3
-			public const int detailItemBackButton = 2131230899;
+			public const int detailItemLastname = 2131230899;
 			
 			// aapt resource value: 0x7f0800b1
-			public const int detailItemFirstname = 2131230897;
-			
-			// aapt resource value: 0x7f0800b2
-			public const int detailItemLastname = 2131230898;
+			public const int detailToolbar = 2131230897;
 			
 			// aapt resource value: 0x7f080020
 			public const int disableHome = 2131230752;

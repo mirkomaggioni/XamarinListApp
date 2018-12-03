@@ -1,11 +1,13 @@
 ﻿using Android.App;
 using Android.OS;
+using Android.Support.V7.App;
+using Android.Views;
 using Android.Widget;
 
 namespace ListApp
 {
 	[Activity(Label = "PersonDetail")]
-	public class PersonDetail : Activity
+	public class PersonDetail : AppCompatActivity
 	{
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -13,17 +15,24 @@ namespace ListApp
 
 			SetContentView(Resource.Layout.person_detail);
 
+			var detailToolbar = FindViewById<Toolbar>(Resource.Id.detailToolbar);
+			detailToolbar.Title = "Detail";
+			SetActionBar(detailToolbar);
+			ActionBar.SetDisplayHomeAsUpEnabled(true);
+			ActionBar.SetHomeButtonEnabled(true);
+
 			var fldFirstname = FindViewById<TextView>(Resource.Id.detailItemFirstname);
 			fldFirstname.Text = Intent.GetStringExtra("Firstname");
 			var fldLastname = FindViewById<TextView>(Resource.Id.detailItemLastname);
 			fldLastname.Text = Intent.GetStringExtra("Lastname");
-			var btnBack = FindViewById<Button>(Resource.Id.detailItemBackButton);
-			btnBack.Click += BtnBack_Click;
 		}
 
-		private void BtnBack_Click(object sender, System.EventArgs e)
+		public override bool OnOptionsItemSelected(IMenuItem item)
 		{
-			Finish();
+			if (item.ItemId == Android.Resource.Id.Home)
+				Finish();
+
+			return base.OnOptionsItemSelected(item);
 		}
 	}
 }
