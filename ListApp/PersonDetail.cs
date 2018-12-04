@@ -6,7 +6,7 @@ using Android.Widget;
 
 namespace ListApp
 {
-	[Activity(Label = "PersonDetail")]
+	[Activity(Label = "PersonDetail", Theme = "@style/AppTheme.NoActionBar")]
 	public class PersonDetail : AppCompatActivity
 	{
 		protected override void OnCreate(Bundle savedInstanceState)
@@ -15,11 +15,11 @@ namespace ListApp
 
 			SetContentView(Resource.Layout.person_detail);
 
-			var detailToolbar = FindViewById<Toolbar>(Resource.Id.detailToolbar);
+			var detailToolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.detailToolbar);
 			detailToolbar.Title = "Detail";
-			SetActionBar(detailToolbar);
-			ActionBar.SetDisplayHomeAsUpEnabled(true);
-			ActionBar.SetHomeButtonEnabled(true);
+			SetSupportActionBar(detailToolbar);
+			SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+			SupportActionBar.SetHomeButtonEnabled(true);
 
 			var fldFirstname = FindViewById<TextView>(Resource.Id.detailItemFirstname);
 			fldFirstname.Text = Intent.GetStringExtra("Firstname");
