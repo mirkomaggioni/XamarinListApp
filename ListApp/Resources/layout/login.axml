@@ -8,27 +8,31 @@
     tools:showIn="@layout/activity_main">
 
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="50dp"
+		android:layout_width="200dp"
+		android:layout_height="40dp"
+		android:padding="3dp"
+		android:background="@drawable/edittext"
 		android:id="@+id/fldUsername"
-		android:layout_marginTop="50.0dp"
+		android:layout_marginTop="80.0dp"
 		android:layout_centerHorizontal="true"
 		android:layout_alignParentTop="true" />
+
 	<EditText
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_width="200dp"
+		android:layout_height="40dp"
+		android:padding="3dp"
+		android:background="@drawable/edittext"
 		android:id="@+id/fldPassword"
-		android:layout_marginTop="100.0dp"
+		android:layout_marginTop="150.0dp"
 		android:layout_centerHorizontal="true"
 		android:layout_alignParentTop="true" />
 
 	<Button
 		android:layout_width="100dp"
 		android:layout_height="50dp"
-		android:layout_centerVertical="true"
 		android:layout_centerHorizontal="true"
 		android:id="@+id/btnLogin"
 		android:text="Login" 
-		android:layout_marginTop="150.0dp" />
+		android:layout_marginTop="220.0dp" />
 
 </RelativeLayout>
