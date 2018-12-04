@@ -3137,7 +3137,10 @@ namespace ListApp
 			public const int support_simple_spinner_dropdown_item = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int tooltip = 2130968640;
+			public const int toolbar = 2130968640;
+			
+			// aapt resource value: 0x7f040041
+			public const int tooltip = 2130968641;
 			
 			static Layout()
 			{
