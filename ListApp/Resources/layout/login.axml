@@ -19,6 +19,7 @@
 	<EditText
 		android:layout_width="250dp"
 		android:layout_height="40dp"
+		android:inputType="textPassword"
 		android:background="@drawable/edittextBackground"
 		android:id="@+id/fldPassword"
 		android:layout_marginTop="150.0dp"
