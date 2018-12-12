@@ -9,6 +9,7 @@ namespace ListApp.Services
 	public class AuthenticationService
 	{
 		private readonly string _baseUrl;
+		public string Token { get; private set; }
 
 		public AuthenticationService(string baseUrl)
 		{
@@ -29,6 +30,8 @@ namespace ListApp.Services
 			});
 
 			var response = await client.PostAsync("/oauth/token", content);
+			if (response.IsSuccessStatusCode)
+				Token = await response.Content.ReadAsStringAsync();
 
 			return response.IsSuccessStatusCode;
 		}
