@@ -11,8 +11,19 @@
 		android:layout_width="250dp"
 		android:layout_height="40dp"
 		android:background="@drawable/edittextBackground"
-		android:id="@+id/fldUsername"
+		android:id="@+id/fldCodiceFiscale"
+		android:hint="Codice fiscale"
 		android:layout_marginTop="80.0dp"
+		android:layout_centerHorizontal="true"
+		android:layout_alignParentTop="true" />
+
+	<EditText
+		android:layout_width="250dp"
+		android:layout_height="40dp"
+		android:background="@drawable/edittextBackground"
+		android:id="@+id/fldUsername"
+		android:hint="Nome utente"
+		android:layout_marginTop="150.0dp"
 		android:layout_centerHorizontal="true"
 		android:layout_alignParentTop="true" />
 
@@ -22,7 +33,8 @@
 		android:inputType="textPassword"
 		android:background="@drawable/edittextBackground"
 		android:id="@+id/fldPassword"
-		android:layout_marginTop="150.0dp"
+		android:hint="Password"
+		android:layout_marginTop="220.0dp"
 		android:layout_centerHorizontal="true"
 		android:layout_alignParentTop="true" />
 
@@ -34,6 +46,6 @@
 		android:layout_centerHorizontal="true"
 		android:id="@+id/btnLogin"
 		android:text="Login" 
-		android:layout_marginTop="220.0dp" />
+		android:layout_marginTop="290.0dp" />
 
 </RelativeLayout>

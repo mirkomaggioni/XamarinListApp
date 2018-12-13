@@ -1,15 +1,17 @@
-﻿using ListApp.BusinessObjects;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using ListApp.BusinessObjects;
+using Newtonsoft.Json;
 using Xamarin.Android.Net;
 
 namespace ListApp.Services
 {
 	public class AuthenticationService
 	{
-		private readonly string _baseUrl;
-		public string Token { get; private set; }
+		public string _baseUrl;
+		public string CfPersona { get; private set; }
+		public Token Token { get; private set; }
 
 		public AuthenticationService(string baseUrl)
 		{
@@ -29,11 +31,16 @@ namespace ListApp.Services
 				new KeyValuePair<string, string>("password", credentials.Password)
 			});
 
-			var response = await client.PostAsync("/oauth/token", content);
-			if (response.IsSuccessStatusCode)
-				Token = await response.Content.ReadAsStringAsync();
+			using (var response = await client.PostAsync("/oauth/token", content))
+			{
+				if (response.IsSuccessStatusCode)
+				{
+					CfPersona = credentials.CfPersona;
+					Token = JsonConvert.DeserializeObject<Token>(await response.Content.ReadAsStringAsync());
+				}
 
-			return response.IsSuccessStatusCode;
+				return response.IsSuccessStatusCode;
+			}
 		}
 	}
 }

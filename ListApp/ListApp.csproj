@@ -66,6 +66,8 @@
     <Compile Include="BusinessObjects\AppSettings.cs" />
     <Compile Include="BusinessObjects\Credentials.cs" />
     <Compile Include="BusinessObjects\Person.cs" />
+    <Compile Include="BusinessObjects\PersonDocument.cs" />
+    <Compile Include="BusinessObjects\Token.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PersonDetail.cs" />
     <Compile Include="PersonsListActivity.cs" />
@@ -113,6 +115,9 @@
   <ItemGroup>
     <PackageReference Include="autofac">
       <Version>4.8.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
   </ItemGroup>

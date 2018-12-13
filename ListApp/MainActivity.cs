@@ -52,9 +52,10 @@ namespace ListApp
 
         private async Task LoginOnClickAsync(object sender, EventArgs eventArgs)
         {
+			var fldCodiceFiscale = FindViewById<TextView>(Resource.Id.fldCodiceFiscale);
 			var fldUsername = FindViewById<TextView>(Resource.Id.fldUsername);
 			var fldPassword = FindViewById<TextView>(Resource.Id.fldPassword);
-			var credentials = new UserCredentials() { Username = fldUsername.Text, Password = fldPassword.Text };
+			var credentials = new UserCredentials() { CfPersona = fldCodiceFiscale.Text, Username = fldUsername.Text, Password = fldPassword.Text };
 
 			if (await _authenticationService.LogonAsync(credentials))
 			{

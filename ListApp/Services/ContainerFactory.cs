@@ -8,6 +8,7 @@ namespace ListApp.Services
 {
 	public static class ContainerFactory
 	{
+		public static AppSettings Settings;
 		private static readonly ContainerBuilder containerBuilder = new ContainerBuilder();
 		private static IContainer container;
 
@@ -19,8 +20,8 @@ namespace ListApp.Services
 
 			using (var reader = new StreamReader(stream))
 			{
-				var settings = (AppSettings)serializer.Deserialize(reader);
-				containerBuilder.Register(_ => new AuthenticationService(settings.ServerAppUrl));
+				Settings = (AppSettings)serializer.Deserialize(reader);
+				containerBuilder.Register(_ => new AuthenticationService(Settings.ServerAppUrl)).SingleInstance();
 			}
 
 			container = containerBuilder.Build();
