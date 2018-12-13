@@ -1,8 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -21,15 +18,7 @@ namespace ListApp
 
 		public MainActivity()
 		{
-			var serializer = new XmlSerializer(typeof(AppSettings));
-			var assembly = IntrospectionExtensions.GetTypeInfo(typeof(AuthenticationService)).Assembly;
-			var stream = assembly.GetManifestResourceStream("ListApp.AppSettings.xml");
-
-			using (var reader = new StreamReader(stream))
-			{
-				var settings = (AppSettings)serializer.Deserialize(reader);
-				_authenticationService = new AuthenticationService(settings.ServerAppUrl);
-			}
+			_authenticationService = ContainerFactory.Get<AuthenticationService>();
 		}
 
 		protected override void OnCreate(Bundle savedInstanceState)
