@@ -60,7 +60,7 @@ namespace ListApp
 			if (await _authenticationService.LogonAsync(credentials))
 			{
 				View view = (View)sender;
-				var intent = new Intent(this, typeof(PersonsListActivity));
+				var intent = new Intent(this, typeof(DocumentsListActivity));
 				StartActivity(intent);
 			}
         }

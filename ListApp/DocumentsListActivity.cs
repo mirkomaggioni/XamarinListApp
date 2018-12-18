@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -15,31 +14,13 @@ using Xamarin.Android.Net;
 
 namespace ListApp
 {
-	[Activity(Label = "PersonsListActivity")]
-	public class PersonsListActivity : Activity
+	[Activity(Label = "DocumentsListActivity")]
+	public class DocumentsListActivity : Activity
 	{
 		private readonly AuthenticationService _authenticationService;
-		private List<PersonDocument> personDocuments;
+		private ODataResult<IEnumerable<PersonDocument>> documents;
 
-		private List<Person> persons = new List<Person>() {
-			new Person()
-			{
-				Firstname = "Mirko",
-				Lastname = "Maggioni"
-			},
-			new Person()
-			{
-				Firstname = "Davide",
-				Lastname = "Varini"
-			},
-			new Person()
-			{
-				Firstname = "Paolo",
-				Lastname = "Zacchi"
-			}
-		};
-
-		public PersonsListActivity()
+		public DocumentsListActivity()
 		{
 			_authenticationService = ContainerFactory.Get<AuthenticationService>();
 		}
@@ -47,21 +28,22 @@ namespace ListApp
 		protected override async void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.persons_list);
+			SetContentView(Resource.Layout.documents_list);
 
 			var client = new HttpClient(new AndroidClientHandler());
 			client.BaseAddress = new Uri(ContainerFactory.Settings.ServerAppUrl);
 
 			var request = new HttpRequestMessage(HttpMethod.Get, $"/odata/Sin/DocumentiPersona?$filter=Persona/CfPersona eq '{_authenticationService.CfPersona}'&$select=Descrizione,Anno");
 			request.Headers.Add("Authorization", $"Bearer {_authenticationService.Token.access_token}");
+			request.Headers.Add("Accept", "application/json");
 
 			using (var response = await client.SendAsync(request))
 			{
 				if (response.IsSuccessStatusCode)
 				{
-					personDocuments = JsonConvert.DeserializeObject<List<PersonDocument>>(await response.Content.ReadAsStringAsync());
-					var list = FindViewById<ListView>(Resource.Id.listPersons);
-					list.Adapter = new PersonAdapter(this, persons);
+					documents = JsonConvert.DeserializeObject<ODataResult<IEnumerable<PersonDocument>>>(await response.Content.ReadAsStringAsync());
+					var list = FindViewById<ListView>(Resource.Id.listDocuments);
+					list.Adapter = new PersonDocumentAdapter(this, documents.value);
 					list.ItemClick += ItemOnClick;
 				}
 			}
@@ -69,9 +51,9 @@ namespace ListApp
 
 		private void ItemOnClick(object sender, AdapterView.ItemClickEventArgs e)
 		{
-			var intent = new Intent(this, typeof(PersonDetail));
-			intent.PutExtra("Firstname", persons[e.Position].Firstname);
-			intent.PutExtra("Lastname", persons[e.Position].Lastname);
+			var intent = new Intent(this, typeof(DocumentDetail));
+			intent.PutExtra("Year", documents.value.ElementAt(e.Position).Anno.ToString());
+			intent.PutExtra("Description", documents.value.ElementAt(e.Position).Descrizione);
 			StartActivity(intent);
 		}
 	}

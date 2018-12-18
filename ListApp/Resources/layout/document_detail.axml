@@ -13,27 +13,27 @@
 		android:rowCount="2"
         android:columnCount="2">
 		<TextView
-         android:id="@+id/listItemLabelFirstname"
+         android:id="@+id/listItemLabelYear"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-		 android:text="Firstname:"
+		 android:text="Year:"
          android:textSize="20dip"
 		 android:paddingLeft="10dip"/>
 		<TextView
-         android:id="@+id/detailItemFirstname"
+         android:id="@+id/detailItemYear"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="20dip"
 		 android:paddingLeft="10dip"/>
 		<TextView
-         android:id="@+id/detailItemLabelLastname"
+         android:id="@+id/detailItemLabelDescription"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-		 android:text="Lastname:"
+		 android:text="Description:"
          android:textSize="20dip"
 		 android:paddingLeft="10dip"/>
 		<TextView
-         android:id="@+id/detailItemLastname"
+         android:id="@+id/detailItemDescription"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="20dip"

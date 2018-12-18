@@ -61,16 +61,17 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\PersonAdapter.cs" />
+    <Compile Include="Adapters\PersonDocumentAdapter.cs" />
     <Compile Include="App.cs" />
     <Compile Include="BusinessObjects\AppSettings.cs" />
     <Compile Include="BusinessObjects\Credentials.cs" />
-    <Compile Include="BusinessObjects\Person.cs" />
+    <Compile Include="BusinessObjects\ODataResult.cs" />
     <Compile Include="BusinessObjects\PersonDocument.cs" />
+    <Compile Include="BusinessObjects\Structure.cs" />
     <Compile Include="BusinessObjects\Token.cs" />
+    <Compile Include="DocumentDetail.cs" />
+    <Compile Include="DocumentsListActivity.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="PersonDetail.cs" />
-    <Compile Include="PersonsListActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
@@ -122,21 +123,6 @@
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\person_item.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\persons_list.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\person_detail.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\toolbar.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -160,6 +146,15 @@
     <EmbeddedResource Include="AppSettings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\document_detail.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\document_item.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\documents_list.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

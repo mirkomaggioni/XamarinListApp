@@ -4,18 +4,18 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
-	<LinearLayout android:id="@+id/listPersonItem"
+	<LinearLayout android:id="@+id/listDocumentItem"
        android:orientation="vertical"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:paddingLeft="10dip">
 		<TextView
-         android:id="@+id/listItemFirstname"
+         android:id="@+id/listItemYear"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="20dip"/>
 		<TextView
-         android:id="@+id/listItemLastname"
+         android:id="@+id/listItemDescription"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="20dip"/>
