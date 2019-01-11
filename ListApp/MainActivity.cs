@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.Design.Widget;
+using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
@@ -12,8 +14,8 @@ using ListApp.Services;
 namespace ListApp
 {
 	[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
-    {
+    public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
+	{
 		AuthenticationService _authenticationService;
 
 		public MainActivity()
@@ -26,12 +28,17 @@ namespace ListApp
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+			var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.appbar);
             SetSupportActionBar(toolbar);
 
-			var button = FindViewById<Button>(Resource.Id.btnLogin);
-            button.Click += async (sender, e) => await LoginOnClickAsync(sender, e);
-        }
+			DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+			ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_close);
+			drawer.AddDrawerListener(toggle);
+			toggle.SyncState();
+
+			NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+			navigationView.SetNavigationItemSelectedListener(this);
+		}
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -50,19 +57,9 @@ namespace ListApp
             return base.OnOptionsItemSelected(item);
         }
 
-        private async Task LoginOnClickAsync(object sender, EventArgs eventArgs)
-        {
-			var fldCodiceFiscale = FindViewById<TextView>(Resource.Id.fldCodiceFiscale);
-			var fldUsername = FindViewById<TextView>(Resource.Id.fldUsername);
-			var fldPassword = FindViewById<TextView>(Resource.Id.fldPassword);
-			var credentials = new UserCredentials() { CfPersona = fldCodiceFiscale.Text, Username = fldUsername.Text, Password = fldPassword.Text };
-
-			if (await _authenticationService.LogonAsync(credentials))
-			{
-				View view = (View)sender;
-				var intent = new Intent(this, typeof(DocumentsListActivity));
-				StartActivity(intent);
-			}
-        }
+		public bool OnNavigationItemSelected(IMenuItem menuItem)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
