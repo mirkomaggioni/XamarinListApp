@@ -33,23 +33,6 @@ namespace ListApp
 			button.Click += async (sender, e) => await LoginOnClickAsync(sender, e);
 		}
 
-		public override bool OnCreateOptionsMenu(IMenu menu)
-		{
-			MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-			return true;
-		}
-
-		public override bool OnOptionsItemSelected(IMenuItem item)
-		{
-			int id = item.ItemId;
-			if (id == Resource.Id.action_settings)
-			{
-				return true;
-			}
-
-			return base.OnOptionsItemSelected(item);
-		}
-
 		private async Task LoginOnClickAsync(object sender, EventArgs eventArgs)
 		{
 			var fldCodiceFiscale = FindViewById<TextView>(Resource.Id.fldCodiceFiscale);

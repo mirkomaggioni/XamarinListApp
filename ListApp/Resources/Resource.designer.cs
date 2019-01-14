@@ -2420,9 +2420,6 @@ namespace ListApp
 			// aapt resource value: 0x7f08005c
 			public const int action_mode_close_button = 2131230812;
 			
-			// aapt resource value: 0x7f0800c4
-			public const int action_settings = 2131230916;
-			
 			// aapt resource value: 0x7f0800ae
 			public const int action_text = 2131230894;
 			
@@ -3220,9 +3217,6 @@ namespace ListApp
 			
 			// aapt resource value: 0x7f0e0000
 			public const int activity_main_drawer = 2131623936;
-			
-			// aapt resource value: 0x7f0e0001
-			public const int menu_main = 2131623937;
 			
 			static Menu()
 			{

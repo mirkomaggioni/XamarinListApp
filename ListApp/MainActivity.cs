@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
-using Android.Widget;
-using ListApp.BusinessObjects;
 using ListApp.Services;
 
 namespace ListApp
@@ -39,23 +35,6 @@ namespace ListApp
 			NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 			navigationView.SetNavigationItemSelectedListener(this);
 		}
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-            return true;
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            int id = item.ItemId;
-            if (id == Resource.Id.action_settings)
-            {
-                return true;
-            }
-
-            return base.OnOptionsItemSelected(item);
-        }
 
 		public bool OnNavigationItemSelected(IMenuItem menuItem)
 		{
