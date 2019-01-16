@@ -51,7 +51,7 @@ namespace ListApp
 
 		private void ItemOnClick(object sender, AdapterView.ItemClickEventArgs e)
 		{
-			var intent = new Intent(this, typeof(DocumentDetail));
+			var intent = new Intent(this, typeof(DocumentDetailActivity));
 			intent.PutExtra("Year", documents.value.ElementAt(e.Position).Anno.ToString());
 			intent.PutExtra("Description", documents.value.ElementAt(e.Position).Descrizione);
 			StartActivity(intent);

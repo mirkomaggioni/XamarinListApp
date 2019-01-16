@@ -1,5 +1,5 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
@@ -38,7 +38,20 @@ namespace ListApp
 
 		public bool OnNavigationItemSelected(IMenuItem menuItem)
 		{
-			throw new NotImplementedException();
+			int id = menuItem.ItemId;
+
+			if (id == Resource.Id.nav_profile)
+			{
+				var intent = new Intent(this, typeof(ProfileActivity));
+				StartActivity(intent);
+			}
+			else if (id == Resource.Id.nav_documents)
+			{
+				var intent = new Intent(this, typeof(DocumentsListActivity));
+				StartActivity(intent);
+			}
+
+			return true;
 		}
 	}
 }

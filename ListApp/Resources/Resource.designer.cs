@@ -2660,14 +2660,14 @@ namespace ListApp
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
 			
-			// aapt resource value: 0x7f0800c1
-			public const int masked = 2131230913;
+			// aapt resource value: 0x7f0800c2
+			public const int masked = 2131230914;
 			
 			// aapt resource value: 0x7f0800b2
 			public const int media_actions = 2131230898;
 			
-			// aapt resource value: 0x7f0800bf
-			public const int message = 2131230911;
+			// aapt resource value: 0x7f0800c0
+			public const int message = 2131230912;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -2678,11 +2678,11 @@ namespace ListApp
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
 			
-			// aapt resource value: 0x7f0800c2
-			public const int nav_camera = 2131230914;
+			// aapt resource value: 0x7f0800c4
+			public const int nav_documents = 2131230916;
 			
 			// aapt resource value: 0x7f0800c3
-			public const int nav_gallery = 2131230915;
+			public const int nav_profile = 2131230915;
 			
 			// aapt resource value: 0x7f08008d
 			public const int nav_view = 2131230861;
@@ -2719,6 +2719,9 @@ namespace ListApp
 			
 			// aapt resource value: 0x7f08004d
 			public const int pin = 2131230797;
+			
+			// aapt resource value: 0x7f0800bf
+			public const int profileTitle = 2131230911;
 			
 			// aapt resource value: 0x7f080006
 			public const int progress_circular = 2131230726;
@@ -2930,8 +2933,8 @@ namespace ListApp
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800c0
-			public const int visible = 2131230912;
+			// aapt resource value: 0x7f0800c1
+			public const int visible = 2131230913;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;
@@ -3185,22 +3188,25 @@ namespace ListApp
 			public const int notification_template_part_time = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int select_dialog_item_material = 2130968639;
+			public const int profile = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int select_dialog_multichoice_material = 2130968640;
+			public const int select_dialog_item_material = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int select_dialog_singlechoice_material = 2130968641;
+			public const int select_dialog_multichoice_material = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int support_simple_spinner_dropdown_item = 2130968642;
+			public const int select_dialog_singlechoice_material = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int toolbar = 2130968643;
+			public const int support_simple_spinner_dropdown_item = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int tooltip = 2130968644;
+			public const int toolbar = 2130968644;
+			
+			// aapt resource value: 0x7f040045
+			public const int tooltip = 2130968645;
 			
 			static Layout()
 			{

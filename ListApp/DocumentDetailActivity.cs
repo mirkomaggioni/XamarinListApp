@@ -7,7 +7,7 @@ using Android.Widget;
 namespace ListApp
 {
 	[Activity(Label = "DocumentDetail", Theme = "@style/AppTheme.NoActionBar")]
-	public class DocumentDetail : AppCompatActivity
+	public class DocumentDetailActivity : AppCompatActivity
 	{
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
