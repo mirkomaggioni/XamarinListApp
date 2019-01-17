@@ -51,11 +51,7 @@ namespace ListApp
 				{
 					case Resource.Id.nav_profile:
 						var act = ProfileActivity.NewInstance();
-						//ft.Replace(Resource.Id.content_frame, act);
-
-						//toolbar.Title = "Dashboard";
-						//HomeFragment mg4 = new HomeFragment();
-						//ft.Replace(Resource.Id.ll, mg4);
+						ft.Replace(Resource.Id.content_frame, act);
 						break;
 				}
 
