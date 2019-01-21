@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
 using ListApp.Adapters;
@@ -61,10 +60,10 @@ namespace ListApp
 
 		private void ItemOnClick(object sender, AdapterView.ItemClickEventArgs e)
 		{
-			//var intent = new Intent(this, typeof(DocumentDetailActivity));
-			//intent.PutExtra("Year", documents.value.ElementAt(e.Position).Anno.ToString());
-			//intent.PutExtra("Description", documents.value.ElementAt(e.Position).Descrizione);
-			//StartActivity(intent);
+			var intent = new Intent(Activity, typeof(DocumentDetailActivity));
+			intent.PutExtra("Year", documents.value.ElementAt(e.Position).Anno.ToString());
+			intent.PutExtra("Description", documents.value.ElementAt(e.Position).Descrizione);
+			StartActivity(intent);
 		}
 	}
 }

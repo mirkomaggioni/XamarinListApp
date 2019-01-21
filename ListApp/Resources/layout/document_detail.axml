@@ -24,7 +24,7 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="20dip"
-		 android:paddingLeft="10dip"/>
+		 android:paddingLeft="50dip"/>
 		<TextView
          android:id="@+id/detailItemLabelDescription"
          android:layout_width="wrap_content"
@@ -37,6 +37,6 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="20dip"
-		 android:paddingLeft="10dip"/>
+		 android:paddingLeft="50dip"/>
 	</GridLayout>
 </RelativeLayout>

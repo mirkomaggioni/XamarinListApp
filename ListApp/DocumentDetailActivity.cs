@@ -22,7 +22,7 @@ namespace ListApp
 
 			var fldYear = FindViewById<TextView>(Resource.Id.detailItemYear);
 			fldYear.Text = Intent.GetStringExtra("Year");
-			var fldDescription = FindViewById<TextView>(Resource.Id.detailItemLabelDescription);
+			var fldDescription = FindViewById<TextView>(Resource.Id.detailItemDescription);
 			fldDescription.Text = Intent.GetStringExtra("Description");
 		}
 
