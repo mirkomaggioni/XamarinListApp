@@ -40,7 +40,7 @@ namespace ListApp
 			navigationView.NavigationItemSelected += (sender, e) =>
 			{
 				e.MenuItem.SetChecked(true);
-				FragmentTransaction ft = FragmentManager.BeginTransaction();
+				var ft = FragmentManager.BeginTransaction();
 				var bundle = new Bundle();
 				var act = new Fragment();
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
 using ListApp.Adapters;
@@ -30,7 +31,7 @@ namespace ListApp
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			var view = inflater.Inflate(Resource.Layout.documents_list, container, false) as ListView;
+			var view = inflater.Inflate(Resource.Layout.documents_list, container, false);
 			string content = null;
 
 			Task.Run(async () =>
@@ -47,13 +48,13 @@ namespace ListApp
 					if (response.IsSuccessStatusCode)
 					{
 						content = await response.Content.ReadAsStringAsync();
+						documents = JsonConvert.DeserializeObject<ODataResult<IEnumerable<PersonDocument>>>(content);
+						var listView = view.FindViewById<ListView>(Resource.Id.listDocuments);
+						listView.Adapter = new PersonDocumentAdapter(inflater, documents.value);
+						listView.ItemClick += ItemOnClick;
 					}
 				}
 			}).Wait();
-
-			documents = JsonConvert.DeserializeObject<ODataResult<IEnumerable<PersonDocument>>>(content);
-			view.Adapter = new PersonDocumentAdapter(inflater, documents.value);
-			//view.ItemClick += ItemOnClick;
 
 			return view;
 		}
