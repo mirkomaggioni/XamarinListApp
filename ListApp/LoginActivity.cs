@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ListApp
 {
-	[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar")]
+	[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
 	public class LoginActivity : AppCompatActivity
 	{
 		AuthenticationService _authenticationService;
@@ -24,7 +24,7 @@ namespace ListApp
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.activity_main);
+			SetContentView(Resource.Layout.login);
 
 			var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 			SetSupportActionBar(toolbar);

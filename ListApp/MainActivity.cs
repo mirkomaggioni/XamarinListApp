@@ -1,16 +1,13 @@
-﻿using System;
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
-using Android.Views;
 using ListApp.Services;
 
 namespace ListApp
 {
-	[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+	[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar")]
     public class MainActivity : AppCompatActivity
 	{
 		AuthenticationService _authenticationService;
