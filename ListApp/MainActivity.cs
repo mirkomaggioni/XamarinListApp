@@ -33,7 +33,6 @@ namespace ListApp
 
 			NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 			SetupDrawerContent(navigationView);
-			//navigationView.SetNavigationItemSelectedListener(this);
 		}
 
 		private void SetupDrawerContent(NavigationView navigationView)
@@ -41,48 +40,24 @@ namespace ListApp
 			navigationView.NavigationItemSelected += (sender, e) =>
 			{
 				e.MenuItem.SetChecked(true);
-
-				FragmentTransaction ft = this.FragmentManager.BeginTransaction();
+				FragmentTransaction ft = FragmentManager.BeginTransaction();
+				var bundle = new Bundle();
+				var act = new Fragment();
 
 				switch (e.MenuItem.ItemId)
 				{
 					case Resource.Id.nav_profile:
-						var act = ProfileActivity.NewInstance();
-						ft.Replace(Resource.Id.content_frame, act);
+						act = new ProfileActivity();
+						break;
+					case Resource.Id.nav_documents:
+						act = new DocumentsListActivity();
 						break;
 				}
 
+				ft.Replace(Resource.Id.content_frame, act);
 				ft.Commit();
 				drawerLayout.CloseDrawers();
 			};
 		}
-
-		//public bool OnNavigationItemSelected(IMenuItem menuItem)
-		//{
-		//	int id = menuItem.ItemId;
-
-		//	if (id == Resource.Id.nav_profile)
-		//	{
-		//		var container = FindViewById(Resource.Id.content_frame);
-		//		var quoteFrag = ProfileActivity.NewInstance();
-
-		//		FragmentTransaction ft = FragmentManager.BeginTransaction();
-		//		ft.Replace(Resource.Id.content_frame, quoteFrag);
-		//		ft.AddToBackStack(null);
-		//		ft.SetTransition(FragmentTransit.FragmentFade);
-		//		ft.Commit();
-
-		//		//var intent = new Intent(this, typeof(ProfileActivity));
-
-		//		//StartActivity(intent);
-		//	}
-		//	else if (id == Resource.Id.nav_documents)
-		//	{
-		//		var intent = new Intent(this, typeof(DocumentsListActivity));
-		//		StartActivity(intent);
-		//	}
-
-		//	return true;
-		//}
 	}
 }

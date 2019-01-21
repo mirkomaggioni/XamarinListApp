@@ -9,13 +9,13 @@ namespace ListApp.Adapters
 {
 	class PersonDocumentAdapter : BaseAdapter<PersonDocument>
 	{
-		Activity context;
 		private readonly List<PersonDocument> _printModel;
+		private readonly LayoutInflater _inflater;
 
-		public PersonDocumentAdapter(Activity context, IEnumerable<PersonDocument> persons)
+		public PersonDocumentAdapter(LayoutInflater inflater, IEnumerable<PersonDocument> persons)
 		{
-			this.context = context;
 			_printModel = persons.ToList();
+			_inflater = inflater;
 		}
 
 		public override long GetItemId(int position) => position;
@@ -28,7 +28,7 @@ namespace ListApp.Adapters
 			var person = _printModel[position];
 
 			if (view == null)
-				view = context.LayoutInflater.Inflate(Resource.Layout.document_item, null);
+				view = _inflater.Inflate(Resource.Layout.document_item, null);
 
 			view.FindViewById<TextView>(Resource.Id.listItemYear).Text = person.Anno.ToString();
 			view.FindViewById<TextView>(Resource.Id.listItemDescription).Text = person.Descrizione;

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using ListApp.Adapters;
 using ListApp.BusinessObjects;
@@ -15,7 +17,7 @@ using Xamarin.Android.Net;
 namespace ListApp
 {
 	[Activity(Label = "DocumentsListActivity")]
-	public class DocumentsListActivity : Activity
+	public class DocumentsListActivity : Fragment
 	{
 		private readonly AuthenticationService _authenticationService;
 		private ODataResult<IEnumerable<PersonDocument>> documents;
@@ -25,36 +27,43 @@ namespace ListApp
 			_authenticationService = ContainerFactory.Get<AuthenticationService>();
 		}
 
-		protected override async void OnCreate(Bundle savedInstanceState)
+		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.documents_list);
+			var view = inflater.Inflate(Resource.Layout.documents_list, container, false) as ListView;
+			string content = null;
 
-			var client = new HttpClient(new AndroidClientHandler());
-			client.BaseAddress = new Uri(ContainerFactory.Settings.ServerAppUrl);
-
-			var request = new HttpRequestMessage(HttpMethod.Get, $"/odata/Sin/DocumentiPersona?$filter=Persona/CfPersona eq '{_authenticationService.CfPersona}'&$select=Descrizione,Anno");
-			request.Headers.Add("Authorization", $"Bearer {_authenticationService.Token.access_token}");
-			request.Headers.Add("Accept", "application/json");
-
-			using (var response = await client.SendAsync(request))
+			Task.Run(async () =>
 			{
-				if (response.IsSuccessStatusCode)
+				var client = new HttpClient(new AndroidClientHandler());
+				client.BaseAddress = new Uri(ContainerFactory.Settings.ServerAppUrl);
+
+				var request = new HttpRequestMessage(HttpMethod.Get, $"/odata/Sin/DocumentiPersona?$filter=Persona/CfPersona eq '{_authenticationService.CfPersona}'&$select=Descrizione,Anno");
+				request.Headers.Add("Authorization", $"Bearer {_authenticationService.Token.access_token}");
+				request.Headers.Add("Accept", "application/json");
+
+				using (var response = await client.SendAsync(request))
 				{
-					documents = JsonConvert.DeserializeObject<ODataResult<IEnumerable<PersonDocument>>>(await response.Content.ReadAsStringAsync());
-					var list = FindViewById<ListView>(Resource.Id.listDocuments);
-					list.Adapter = new PersonDocumentAdapter(this, documents.value);
-					list.ItemClick += ItemOnClick;
+					if (response.IsSuccessStatusCode)
+					{
+						content = await response.Content.ReadAsStringAsync();
+					}
 				}
-			}
+			}).Wait();
+
+			documents = JsonConvert.DeserializeObject<ODataResult<IEnumerable<PersonDocument>>>(content);
+			view.Adapter = new PersonDocumentAdapter(inflater, documents.value);
+			//view.ItemClick += ItemOnClick;
+
+			return view;
 		}
 
 		private void ItemOnClick(object sender, AdapterView.ItemClickEventArgs e)
 		{
-			var intent = new Intent(this, typeof(DocumentDetailActivity));
-			intent.PutExtra("Year", documents.value.ElementAt(e.Position).Anno.ToString());
-			intent.PutExtra("Description", documents.value.ElementAt(e.Position).Descrizione);
-			StartActivity(intent);
+			//var intent = new Intent(this, typeof(DocumentDetailActivity));
+			//intent.PutExtra("Year", documents.value.ElementAt(e.Position).Anno.ToString());
+			//intent.PutExtra("Description", documents.value.ElementAt(e.Position).Descrizione);
+			//StartActivity(intent);
 		}
 	}
 }
